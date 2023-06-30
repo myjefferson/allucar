@@ -37,14 +37,12 @@ class VehicleController extends Controller
 
     public function update(VehicleRequest $request, $id){
         Vehicle::find($id)
-        ->update(
-            ['image' => $this->uploadImage($request)],
-            $request->only(
-                'marca',
-                'modelo',
-                'preco'
-            )
-        );
+        ->update([
+            'image' => $this->uploadImage($request),
+            'marca' => $request->marca,
+            'modelo' => $request->modelo,
+            'preco' => $request->preco
+        ]);
         return redirect()->route('vehicle.show', compact('id'));
     }
 

@@ -15,6 +15,9 @@
     </head>
     <body class="antialiased container">
         <div class="app">
+            @if (auth()->check())
+                {{ session()->get('success') }} <a href={{ route('login.destroy') }} class="btn btn-primary">Sair</a>
+            @endif
             @yield('content_app')
         </div>
     </body>
