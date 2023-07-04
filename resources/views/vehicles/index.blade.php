@@ -2,11 +2,12 @@
 @extends('components.modal')
 
 @section('content_app')
-    <h1 class="mb-4">Listagem de Veículos</h1>
-    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modalRegister">
-        Cadastrar Veículo
-    </button>
-
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 class="mb-4">Veículos</h1>
+        <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modalRegister">
+            Cadastrar Veículo
+        </button>
+    </div>
     <div class="row">
         @foreach ($vehicles as $vehicle)
             <div class="col-12 col-sm-6 col-md-4 col-lg-4">
@@ -14,7 +15,8 @@
                     <img width="100%" src={{ url("upload/".$vehicle->image) }} alt={{ $vehicle->marca }}>
                     <div class="card-body">
                         <h5 class="card-title">Marca: {{ $vehicle->marca }}</h5>
-                        <p class="card-text">Modelo: {{ $vehicle->modelo }}</p>
+                        <p class="card-text mb-1">Modelo: {{ $vehicle->modelo }}</p>
+                        <h4 class="card-text mt-1"><b>R${{ $vehicle->preco }}</b></h4>
                         <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalRemove">Remover</button>
                         <a href={{ route('vehicle.show', ['id' => $vehicle->id]) }} class="btn btn-primary">Mais detalhes</a>
                     </div>

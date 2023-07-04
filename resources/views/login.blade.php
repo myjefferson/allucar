@@ -1,12 +1,10 @@
 @extends('layouts.app')
 
 @if (auth()->check())
-
-    Você está logado
-
+    <?php header('Location: ' . route('vehicle.index')) ?>
 @else
 
-    @section('content_app')
+    @section('content_login')
         <div class="vh-100 w-100 d-flex align-items-center justify-content-center">
             <form action={{route('login.store')}} method="POST">
                 @csrf

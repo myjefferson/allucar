@@ -1,19 +1,30 @@
+<link href={{ asset('assets/css/show.vehicle.css') }} rel="stylesheet">
 @extends('layouts.app')
 @extends('components.modal')
 
 @section('title', 'Detalhes do Veículo')
 @section('content_app')
-    <a href={{ route('vehicle.index') }} class="btn btn-primary">Voltar</a>
-    <p><b>Veiculo</b></p>
-    <p><img width="100" src={{ url("upload/".$vehicle->image) }} alt={{ $vehicle->marca }}></p>
-    <p> Marca: {{ $vehicle->marca }} </p>
-    <p> Modelo: {{ $vehicle->modelo }} </p>
-    <p> Preço: {{ $vehicle->preco }} </p>
-    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalRemove">Remover</button>
+    <a href={{ route('vehicle.index') }} class="btn btn-primary mb-3">Voltar</a>
+    <div class="card mb-3" style="width: 100%;">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6">
+                <img src={{ url("upload/".$vehicle->image) }} alt={{ $vehicle->marca }} class="image-upload">
+            </div>
+            <div class="card-body col-12 col-sm-12 col-md-6 d-flex align-items-center">
+                <div>
+                    <p><b>Veiculo</b></p>
+                    <p> Marca: {{ $vehicle->marca }} </p>
+                    <p> Modelo: {{ $vehicle->modelo }} </p>
+                    <h3><b> R${{ $vehicle->preco }} </b></h3>
+                    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalRemove">Remover</button>
 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRegister">
-        Editar Veículo
-    </button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRegister">
+                        Editar Veículo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 
